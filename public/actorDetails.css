@@ -1,0 +1,77 @@
+/* Body styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('netflix-background-9-900x506.jpg'); /* Replace 'path_to_your_image.jpg' with your image file path */
+    color: white;
+}
+
+/* Actor details container */
+.actor-details {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Actor poster styles */
+.actor-poster img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.actor-poster img:hover {
+    transform: scale(1.05);
+}
+
+/* Actor information styles */
+.actor-info {
+    flex: 1;
+}
+
+.actor-name {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.date-of-birth {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.biography {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.biography:before {
+    content: 'Biography:';
+    font-weight: bold;
+}
+
+/* Known movies list styles */
+.known-movies {
+    font-weight: bold;
+}
+
+.known-movies div {
+    margin-bottom: 5px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.known-movies div:before {
+    content: '\2022';
+    position: absolute;
+    left: 0;
+    color: #ff5722;
+}

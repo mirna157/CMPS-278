@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actor Details</title>
+    <link rel="stylesheet" href="actorDetails.css">
+</head>
+<body>
+    <!-- Placeholder structure for actor details page -->
+    <div class="actor-details">
+        <div class="actor-poster">
+            <img src="" alt="Actor Poster">
+        </div>
+        <div class="actor-info">
+            <h2 class="actor-name"></h2>
+            <p>Date of Birth: <span class="date-of-birth"></span></p>
+            <p class="biography"></p>
+            <h3>Known For</h3>
+            <div class="known-movies"></div>
+        </div>
+    </div>
+
+    <script>
+        const BASEURL = 'https://api.themoviedb.org/3';
+        const IMAGEURL = 'https://image.tmdb.org/t/p/w500';
+        const APIKEY = 'api_key=96c05c6f53c2f9b20b3e42af4887dc76'; // Replace with your actual API key
+
+        // Get actor ID from the URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const actorId = urlParams.get('id'); // Assuming the actor ID is passed as 'id' in the URL
+
+        // Fetch actor details including biography and date of birth
+        fetch(`${BASEURL}/person/${actorId}?${APIKEY}`)
+            .then(response => response.json())
+            .then(actorDetailsData => {
+                console.log('Actor Details:', actorDetailsData); // Log actor details for debugging
+
+                // Display actor details on the page
+                document.querySelector('.actor-name').textContent = actorDetailsData.name;
+
+                const actorPosterElement = document.querySelector('.actor-poster img');
+                actorPosterElement.src = actorDetailsData.profile_path
+                    ? `${IMAGEURL}${actorDetailsData.profile_path}`
+                    : 'https://via.placeholder.com/300'; // Placeholder image if no poster available
+                actorPosterElement.alt = actorDetailsData.name;
+
+                document.querySelector('.date-of-birth').textContent = actorDetailsData.birthday || 'Not available';
+                document.querySelector('.biography').textContent = actorDetailsData.biography || 'Biography not available';
+            })
+            .catch(error => {
+                console.error('Error fetching actor details:', error);
+            });
+
+        // Fetch the list of known movies for the actor
+        fetch(`${BASEURL}/person/${actorId}/movie_credits?${APIKEY}`)
+            .then(response => response.json())
+            .then(knownMoviesData => {
+                console.log('Known Movies:', knownMoviesData); // Log known movies for debugging
+
+                const knownMovies = knownMoviesData.cast.slice(0, 4); // Limit to the first 4 known movies
+
+                const knownMoviesDiv = document.querySelector('.known-movies');
+                knownMovies.forEach(movie => {
+                    const movieElement = document.createElement('div');
+                    movieElement.textContent = movie.title;
+                    knownMoviesDiv.appendChild(movieElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching known movies:', error);
+            });
+    </script>
+</body>
+<footer class="site-footer">
+    <div class="footer-links">
+      <div class="social-media">
+        <h4>Follow IMDb</h4>
+        <ul>
+          <li><a href="https://www.tiktok.com/@imdb" target="_blank">Tiktok</a></li>
+          <li><a href="https://www.instagram.com/imdb" target="_blank">Instagram</a></li>
+          <li><a href="https://twitter.com/imdb" target="_blank">Twitter</a></li>
+          <li><a href="https://www.youtube.com/imdb" target="_blank">Youtube</a></li>
+          <li><a href="https://www.facebook.com/imdb" target="_blank">Facebook</a></li>
+        </ul>
+      </div>
+      <div class="additional-links">
+        <ul>
+          <li><a href="https://www.imdb.com/pressroom/" target="_blank">Press Room</a></li>
+          <li><a href="https://www.imdb.com/conditions" target="_blank">Conditions of Use</a></li>
+          <li><a href="https://www.imdb.com/privacy" target="_blank">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+<style>
+    .site-footer {
+    background-color: #000000;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .social-media, .additional-links {
+    margin-bottom: 15px;
+  }
+  
+  .additional-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .additional-links ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+</style>
+  </footer>
+</html>

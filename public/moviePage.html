@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- website title  -->
+    <title>movies page</title>
+    <!-- fontawesome icon link -->
+    <script src="https://kit.fontawesome.com/6f38b70ccc.js" crossorigin="anonymous"></script>
+    <!-- style css link  -->
+    <link rel="stylesheet" href="moviePage.css">
+</head>
+<body>
+    <!-- this is the back button to go to the main page  -->
+    <header>
+        <!-- User profile section -->
+        <div class="user-profile">
+          <div class="profile-info">
+            <img src="profile.jpg" alt="Profile Picture">
+            <span id="usernamePlaceholder">loading...</span>
+          </div>
+          <a href="edit-profile.html" class="edit-profile-link">Edit Profile</a>
+        </div>
+        <script>
+            // Fetch data from the server
+            fetch('/getUsername')
+              .then(response => response.json())
+              .then(data => {
+                const usernameElement = document.getElementById('usernamePlaceholder');
+                usernameElement.textContent = data.username; // Replace 'loading...' with the fetched username
+              })
+              .catch(error => {
+                console.error('Error fetching data:', error);
+              });
+          </script>
+        <style>
+        /* Styles for user profile section */
+        .user-profile {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 10px;
+        background-color: #999999;
+        border-radius: 5px;
+        }
+
+        .profile-info {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        }
+
+        .profile-info img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+        }
+
+        .username {
+        font-weight: bold;
+        }
+
+        .edit-profile-link {
+        text-decoration: none;
+        color: #333;
+        border: 1px solid #333;
+        padding: 5px 10px;
+        border-radius: 5px;
+        }
+</style>
+      </header>
+    <!-- main div  -->
+    <div id="main">
+        <!-- movie is displayed here  -->
+        <div id="movie-display">
+    
+            <div class="each-movie-page"></div>
+        </div>
+    </div>
+    <!-- the javascript for the moive page is linked here  -->
+    <script type="text/javascript" src="moviePage.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Actor Details</title>
+    <!-- Add necessary stylesheets or scripts -->
+</head>
+
+<body>
+    <div class="actor-details">
+        <h1 id="actor-name"></h1>
+        <div id="actor-poster"></div>
+        <div id="actor-bio"></div>
+        <div id="actor-birth-date"></div>
+        <div id="actor-known-movies"></div>
+    </div>
+    <script>
+        // Get the actor ID from the URL parameters
+const urlParams = new URLSearchParams(window.location.search);
+const actorId = urlParams.get('id');
+
+// Fetch actor details and known movies using the actorId
+fetch(`${BASEURL}/person/${actorId}?${APIKEY}&language=en-US`)
+    .then(response => response.json())
+    .then(actorData => {
+        // Populate the HTML elements with actor details
+        const actorNameElement = document.getElementById('actor-name');
+        actorNameElement.textContent = actorData.name;
+
+        // Display the actor's image
+        const actorPoster = document.getElementById('actor-poster');
+        if (actorData.profile_path) {
+            const actorImg = document.createElement('img');
+            actorImg.src = `${IMAGEURL}${actorData.profile_path}`;
+            actorImg.alt = actorData.name;
+            actorPoster.appendChild(actorImg);
+        }
+
+        // Display the actor's biography
+        const actorBio = document.getElementById('actor-bio');
+        actorBio.textContent = actorData.biography;
+
+        // Display the actor's date of birth
+        const actorBirthDate = document.getElementById('actor-birth-date');
+        actorBirthDate.textContent = `Date of Birth: ${actorData.birthday}`;
+
+        // Fetch the known movies of the actor
+        return fetch(`${BASEURL}/person/${actorId}/movie_credits?${APIKEY}&language=en-US`);
+    })
+    .then(movieCreditsResponse => movieCreditsResponse.json())
+    .then(movieCreditsData => {
+        // Display the list of known movies
+        const actorKnownMovies = document.getElementById('actor-known-movies');
+        const knownMovies = movieCreditsData.cast.slice(0, 4); // Displaying only 4 known movies
+
+        knownMovies.forEach(movie => {
+            const knownMovieElement = document.createElement('div');
+            knownMovieElement.textContent = movie.title;
+            actorKnownMovies.appendChild(knownMovieElement);
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching actor details:', error);
+    });
+
+    </script>
+</body>
+<footer class="site-footer">
+    <div class="footer-links">
+      <div class="social-media">
+        <h4>Follow IMDb</h4>
+        <ul>
+          <li><a href="https://www.tiktok.com/@imdb" target="_blank">Tiktok</a></li>
+          <li><a href="https://www.instagram.com/imdb" target="_blank">Instagram</a></li>
+          <li><a href="https://twitter.com/imdb" target="_blank">Twitter</a></li>
+          <li><a href="https://www.youtube.com/imdb" target="_blank">Youtube</a></li>
+          <li><a href="https://www.facebook.com/imdb" target="_blank">Facebook</a></li>
+        </ul>
+      </div>
+      <div class="additional-links">
+        <ul>
+          <li><a href="https://www.imdb.com/pressroom/" target="_blank">Press Room</a></li>
+          <li><a href="https://www.imdb.com/conditions" target="_blank">Conditions of Use</a></li>
+          <li><a href="https://www.imdb.com/privacy" target="_blank">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+<style>
+    .site-footer {
+    background-color: #000000;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .social-media, .additional-links {
+    margin-bottom: 15px;
+  }
+  
+  .additional-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .additional-links ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+</style>
+  </footer>
+</html>

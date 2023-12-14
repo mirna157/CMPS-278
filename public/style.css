@@ -1,0 +1,362 @@
+/* this is the css for body , the background color is given as black */
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: black;
+    background-blend-mode: multiply;
+    background-size:cover;
+    color: rgb(255, 255, 255);
+    overflow-x: hidden;
+}
+/* header section css */
+#header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    z-index: 10;
+}
+/* setting the width and height of the logo  */
+#logodiv{
+    width: 250px;
+    height: 100px;
+}
+#logoimg{
+    width: 110%;
+    height: 100%;
+}
+/* setting the width of  the search bar  */
+#search-bar{
+    width: 35%;
+    background-color: black;
+}
+.search-conten{
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    top: 15px;
+}
+#search-area{
+    display: flex;
+    justify-content: space-between;
+    align-items:end;
+    color: white;
+}
+/* styling the input section of the search function  */
+#search-area input{
+    width: 100%;
+    font-size: 1.6rem;
+    border: none;
+    color: white;
+    background-color: black;
+}
+/* the result of the search  */
+.results{
+    padding: 0px;
+    max-height: 600px;
+    overflow-y: scroll;
+}
+.results ul{
+    padding: 0px;
+    margin: 0px;
+}
+.results ul li{
+    list-style: none;
+    padding: 5px 15px;
+    opacity: 0;
+    display: none;
+    border-radius: 3px;
+    transition: all .5s linear;
+}
+
+/* css to the fav btn to neg to fav section */
+#right-section{
+    display: flex;
+    justify-content: space-around;
+    margin: 0px 20px;
+}
+#right-section button{
+    border: none;
+    color: white;
+    background:none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0px 20px;
+}
+#right-section button:hover, #right-section select:hover{
+    color: red;
+    text-decoration: none;
+}
+#my-list a{
+    text-decoration: none;
+    color: inherit;
+}
+
+/* all movies cards  */
+#movie-container{
+    margin: auto;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.movie-element{
+    margin: 20px;
+}
+.movie-poster{
+    height: 350px;
+    width: 250px;
+}
+.movie-element:hover{
+    transform: scale(1.1);
+}
+.movie-poster img{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    transition: all .2s ease-in;
+}
+/* name of the movie  */
+.movie-title{
+    max-width: 240px;
+    margin: 4px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+.movie-element-tags{
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* movie rating  */
+.movie-rating, .add-movie-to-list{
+    font-size: 1.4rem;
+}
+.movie-rating i{
+    color: gold;
+}
+.add-movie-to-list{
+    color: red;
+}
+.add-movie-to-list:hover{
+    color: red;
+}
+/* prev and next button  */
+.page-navigation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20px;
+}
+.page-navigation button{
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    background-color: red;
+}
+.page-navigation button:hover{
+    transform: scale(1.1);
+}
+
+#main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Other styles for #main */
+}
+#right-section {
+    /* If you want to move it to the far right */
+    margin-left: auto;
+}
+/* responsiveness and media queries */
+@media screen and (max-width:950px) {
+    #logo{
+        width: 200px;
+        height: auto;
+    }
+}
+/* when the screen size is 700 and less  */
+@media screen and (max-width:700px) {
+    #header{
+        flex-direction: column;
+    }
+    #page-heading{
+        padding-top: 140px;
+    }
+    #right-section{
+        margin: 10px;
+    }
+    #search-bar{
+        margin: 10px;
+    }
+    #back-to-home{
+        top: 15px;
+        left: 15px;
+        margin: 0;
+    }
+}
+#logoimg{
+    width: 120px; 
+    height: 60px;
+}
+@media screen and (max-width:700px) {
+    #page-heading{
+        font-size: 4rem;
+    }
+}
+/* when the screen size is 550 and less  */
+@media screen and (max-width:550px) {
+    #page-heading{
+        font-size: 4.5rem;
+        padding-top: 140px;
+    }
+    .page-navigation{
+        flex-direction: column;
+    }
+}
+/* when the screen size is 380 and less  */
+@media screen and (max-width:380px) {
+    #page-heading{
+        padding-top: 150px;
+    }
+}
+
+.carousel-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+
+    background-color:black;
+}
+
+.carousel-poster img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.carousel-info {
+    text-align: center;
+    margin-top: 10px;
+}
+.movie-title-1 {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+    
+}
+
+.view-trailer {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+.featured-movies {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* Optionally add more styles like margin, padding, etc. */
+  }
+  
+  .featured-movie {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Center-align content */
+    /* Optionally add more styles like width, height, etc. */
+  }
+  
+  .featured-movie img {
+    width: 120px;
+    height: auto;
+  }
+  
+  .featured-movie .featured-movie-title {
+    margin-top: 10px;
+    font-size: 18px;
+    word-wrap: break-word;
+    max-width: 120px; /* Limit width to avoid extending too much */
+  }
+  
+  
+
+/* CSS styles */
+.poster-flex-container {
+    display: flex;
+    overflow-x: hidden; /* Hide the horizontal scrollbar */
+    scroll-behavior: smooth;
+    align-items: center;
+}
+
+.movie {
+    flex: 0 0 auto;
+    margin-left: 10px;
+    padding: 0;
+    width: 100%; /* Fill the available space */
+    max-width: 300px; /* Set a maximum width for individual posters */
+    height: auto;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .poster-flex-container {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
+::-webkit-scrollbar {
+    width: 10px; /* Change this value to adjust the width */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Change this to the color you prefer */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #000; /* Set the color of the scrollbar handle */
+}
+
+
+
+
+
+
+.container {
+    max-width: 1000px; /* Increased width for better alignment */
+    margin: 0 auto;
+    padding: 5px;
+  }
+  
+  .cards-container {
+    display: flex; /* Align movie cards horizontally */
+    flex-wrap: wrap; /* Allow cards to wrap to the next line if needed */
+    justify-content: space-between; /* Distribute space between cards */
+  }
+  
+  .movie-card {
+    width: 200px; /* Set a fixed width for each card */
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px; /* Increased margin for better spacing */
+  }
+  
+  .movie-card img {
+    width: 100%; /* Make sure images take full width inside the card */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Prevent extra space under the image */
+    margin-bottom: 10px; /* Add some space below the image */
+  }
+  

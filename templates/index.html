@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <script src="https://kit.fontawesome.com/6f38b70ccc.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="main">
+        <div id="header">
+            <!-- Header content -->
+            <div id="logodiv">
+                <a href="index.html"><img id="logoimg" src="logo.png" alt="imdb"></a>
+            </div>
+        </div>
+        <div id="search-bar">
+            <div class="search-content">
+                <div id="search-area">
+                    <!-- this is the input area for searching the movie  -->
+                    <input type="text" name="searchMovie" id="searchMovie" placeholder="Search for movies here"
+                        autocomplete="off">
+                </div>
+                <!-- here the results will be displayed  -->
+                <div class="results">
+                    <ul>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="right-section">
+            <button id="my-list">
+                <!-- link to go fav section  -->
+                <a href="./myfav.html">WatchList</a>
+            </button>
+        </div>
+    </div>
+        <!-- Recently Added Movies Section -->
+        <div id="carousel-container" class="filtering"></div>
+        </div>
+        <div class="featured-today">
+            <hr>
+            <h2>Featured Today</h2>
+            <div class="featured-movies">
+                <!-- Content for featured movies will be added dynamically -->
+            </div>
+            <hr>
+        </div>
+        <div class="coming-soon-movies">
+            <h2>Coming Soon</h2>
+            <div class="movie-list">
+                <!-- Dynamically generated content for coming soon movies -->
+            </div>
+        </div>
+
+        <hr>
+        <h2>Top 5 Movies in the US Box Office</h2>
+        <div class="container">
+           
+            <div class="cards-container" id="movies-container">
+              <!-- Movie cards will be dynamically added here -->
+            </div>
+        </div>
+        <hr>
+        <h2>Find other movies: </h2>
+ 
+
+
+        <div id="Searched"></div>
+        
+        <div id="movie-container">
+            <!-- Content for other movies will be added dynamically -->
+            <div class="movie-element"></div>
+            
+            <!-- JavaScript will populate this area -->
+        </div>
+
+        <div class="page-navigation">
+            <button id="prev-page">Prev</button>
+            <button id="next-page">Next</button>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    
+</body>
+<footer class="site-footer">
+    <div class="footer-links">
+      <div class="social-media">
+        <h4>Follow IMDb</h4>
+        <ul>
+          <li><a href="https://www.tiktok.com/@imdb" target="_blank">Tiktok</a></li>
+          <li><a href="https://www.instagram.com/imdb" target="_blank">Instagram</a></li>
+          <li><a href="https://twitter.com/imdb" target="_blank">Twitter</a></li>
+          <li><a href="https://www.youtube.com/imdb" target="_blank">Youtube</a></li>
+          <li><a href="https://www.facebook.com/imdb" target="_blank">Facebook</a></li>
+        </ul>
+      </div>
+      <div class="additional-links">
+        <ul>
+          <li><a href="https://www.imdb.com/pressroom/" target="_blank">Press Room</a></li>
+          <li><a href="https://www.imdb.com/conditions" target="_blank">Conditions of Use</a></li>
+          <li><a href="https://www.imdb.com/privacy" target="_blank">Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+<style>
+    .site-footer {
+    background-color: #000000;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .social-media, .additional-links {
+    margin-bottom: 15px;
+  }
+  
+  .additional-links ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .additional-links ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+</style>
+  </footer>
+</html>
